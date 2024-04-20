@@ -1,9 +1,10 @@
 import express from 'express';
 import cors from 'cors';
+//its middleware in nodejs to parse the data from cookie
 import cookieParser from 'cookie-parser';
-import { config } from './config';
+// import { config } from './config';
 
-import { router } from './routes';
+// import { router } from './routes';
 const app = express();
 
 //middleware for cros origin platform
@@ -18,7 +19,7 @@ app.use(express.json({limit:"20kb"}))
 //to get data from url also
 app.use(express.urlencoded({extended:true , limit:"16kb"}))
 
-//use to store data ststicly data consist pdf, files. to store data on local server
+//use to store data statisticly data consist pdf, files. to store data on local server
 app.use(express.static("public"))
 
 //to config cookieparser

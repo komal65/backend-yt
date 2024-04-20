@@ -1,12 +1,42 @@
 // method 1 - using promises
-const asyncHandler=(requestHandler)=>{
-    (req, res, next)=>{
-        Promise.resolve(requestHandler(req, res, next)).catch((err)=>next(err))
-    }
 
+
+// Function that takes in a request handler and returns a new function that handles promises
+const asyncHandler = (requestHandler) => {
+    // Return a new function that takes in req, res, and next
+    return (req, res, next) => {
+        // Use Promise.resolve to convert the result of the request handler into a promise
+        // Then use the catch method to handle any errors that occur in the promise chain
+        Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err))
+    }
 }
 
+// Export the asyncHandler function
 export {asyncHandler}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //method2 - try catch
 
